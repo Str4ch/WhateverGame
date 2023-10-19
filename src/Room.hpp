@@ -12,11 +12,17 @@
 
 #include "SFML/Graphics.hpp"
 #include "globalvariables.hpp"
+#include "Player.hpp"
+#include "Door.hpp"
 
 class Room{
 public:
     
-    std::vector <std::vector <int>> door;//массив в котором хранится кол-во дверей их позиция и на какой стене
+    //std::vector <std::vector <int>> door;//массив в котором хранится кол-во дверей их позиция и на какой стене
+    
+    Door* doors;
+    
+    int door_count;
     
     //размеры
     int sizeX;
@@ -27,7 +33,7 @@ public:
     
     
     void drawRoom(sf::RenderWindow &w);
-    int nearRoom(int x, int y);
+    int nearRoom(Player &p);
     
     Room();
     Room(std::vector <std::vector <int>> dr, int sx, int sy, int tp);

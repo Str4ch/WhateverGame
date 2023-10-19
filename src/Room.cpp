@@ -10,7 +10,25 @@
 #include <iostream>
 Room::Room(){}
 Room::Room(std::vector <std::vector <int>> dr, int sx, int sy, int tp){
-    door = dr;
+    //door = dr;
+    door_count = int(dr.size());
+    doors = new Door[door_count];
+    for(int i = 0;i<door_count;i++){
+        switch (dr[i][0]) {
+            case 0:
+                doors[i] = Door(float(global::resolution.width/2-sx/2-50), float(global::resolution.height/2-sy/2+dr[i][1]+100), dr[i][2],0);
+                break;
+            case 1:
+                doors[i] = Door(float(global::resolution.width/2-sx/2+dr[i][1]), float(global::resolution.height/2-sy/2-50),dr[i][2],1);
+                break;
+            case 2:
+                doors[i] = Door(float(global::resolution.width/2)+sx/2+50, float(global::resolution.height/2)-sy/2+dr[i][1],dr[i][2],2);
+                break;
+            case 3:
+                doors[i] = Door(float(global::resolution.width/2-sx/2+dr[i][1]+100), float(global::resolution.height/2+sy/2+50),dr[i][2],3);
+                break;
+        }
+    }
     sizeX = sx;
     sizeY = sy;
     type = tp;
@@ -87,56 +105,19 @@ void Room::drawRoom(sf::RenderWindow &w){
     corner.setPosition(global::resolution.width/2+sizeX/2+50, global::resolution.height/2+sizeY/2);
     w.draw(corner);
     
-    sf::Sprite doorsh;
-    doorsh.setTexture(door_texture);
-    doorsh.setTextureRect(sf::IntRect(0,0,100,50));
-    for(int i = 0;i<door.size();i++){
-        if(door[i][0] == 0){
-            doorsh.setRotation(270);
-            doorsh.setPosition(global::resolution.width/2-sizeX/2-50, int(global::resolution.height/2)-sizeY/2+door[i][1]+100);
-        }
-        else if(door[i][0] == 1){
-            //doorsh.setRotation(270);
-            doorsh.setPosition(global::resolution.width/2-sizeX/2+door[i][1], int(global::resolution.height/2)-sizeY/2-50);
-        }
-        else if(door[i][0] == 2){
-            doorsh.setRotation(90);
-            doorsh.setPosition(global::resolution.width/2+sizeX/2+50, int(global::resolution.height/2)-sizeY/2+door[i][1]);
-            //doorsh.rotate(270);
-        }
-        else{
-            doorsh.setRotation(180);
-            doorsh.setPosition(global::resolution.width/2-sizeX/2+door[i][1]+100, global::resolution.height/2+sizeY/2+50);
-            doorsh.rotate(180);
-        }
-        w.draw(doorsh);
+    for(int i = 0;i<door_count;i++){
+        doors[i].draw_door(w);
     }
 }
 
 
-int Room::nearRoom(int x, int y){
-    //std::cout<<global::resolution.width/2-sizeX/2+door[0][1]<<" "<<global::resolution.height/2-sizeY/2<<'\n';
-    for(int i = 0;i<door.size();i++){
-        if(door[i][0] == 0){
-            if(x>(global::resolution.width/2-sizeX/2) && x<(global::resolution.width/2-sizeX/2+50) && y>(int(global::resolution.height/2)-sizeY/2+door[i][1]) && y<(int(global::resolution.height/2)-sizeY/2+door[i][1]+300)){
-                return door[i][2];
-            }
-        }
-        else if(door[i][0] == 1){
-            if(x>global::resolution.width/2-sizeX/2+door[i][1] && x<global::resolution.width/2-sizeX/2+door[i][1]+300 && y>int(global::resolution.height/2)-sizeY/2 && y<int(global::resolution.height/2)-sizeY/2+50){
-                return door[i][2];
-            }
-        }
-        else if(door[i][0] == 2){
-            
-            if(x>(global::resolution.width/2+sizeX/2-50) && x<(global::resolution.width/2+sizeX/2) && y>global::resolution.height/2-sizeY/2+door[i][1] && y<int(global::resolution.height/2)-sizeY/2+door[i][1] +300){
-                return door[i][2];
-            }
-        }
-        else{
-            if(x>global::resolution.width/2-sizeX/2+door[i][1] && x<global::resolution.width/2-sizeX/2+door[i][1]+300 && y>global::resolution.height/2+sizeY/2-50 && y<global::resolution.height/2+sizeY/2){
-                return door[i][2];
-            }
+int Room::nearRoom(Player &p){
+    for(int i = 0;i<door_count;i++){
+        if(doors[i].next_to_room(p)){
+            p.x = doors[i].x;
+            p.y = doors[i].y;
+            //p.player_shape.setPosition(doors[i].x, doors[i].y);
+            return doors[i].room_tp;
         }
     }
     return -1;
