@@ -49,7 +49,7 @@ Door::Door(float x, float y, int room_tp,int wall_num){
 Door::~Door(){}
 void Door::draw_door(sf::RenderWindow &w){
     sf::Texture door_texture;
-    door_texture.loadFromFile("/Users/alekseyshmakov/WhateverGame/src/sprites/door.png");
+    door_texture.loadFromFile("sprites/door.png");
     door_sp.setTexture(door_texture);
     
     enter_the_door.setFillColor(sf::Color(0,0,0,0));

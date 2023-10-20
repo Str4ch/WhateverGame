@@ -26,7 +26,8 @@ int main()
    bool W = false,
         A = false,
         S = false,
-        D = false;
+        D = false,
+        Shift = false;
 
     Map map;
     bool f = true;
@@ -45,6 +46,7 @@ int main()
             A = sf::Keyboard::isKeyPressed(sf::Keyboard::A);
             D = sf::Keyboard::isKeyPressed(sf::Keyboard::D);
             S = sf::Keyboard::isKeyPressed(sf::Keyboard::S);
+            Shift = sf::Keyboard::isKeyPressed(sf::Keyboard::LShift);
             
             if(sf::Keyboard::isKeyPressed(sf::Keyboard::E) && f){
                 f = false;
@@ -67,7 +69,12 @@ int main()
             else f = true;
             //std::cout<<event.key.code;
         }
-        
+        if(Shift){
+            my_player.speed = 0.15;
+        }
+        else{
+            my_player.speed = 0.1;
+        }
         length = std::pow((D-A)*(D-A)+(S-W)*(S-W), 0.5);
 
         //std::cout<<(angle);

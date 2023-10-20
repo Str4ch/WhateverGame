@@ -13,7 +13,7 @@
 
 Map::Map(){
     //std::cout<<1;
-    rm_count = std::rand()%7+4;
+    rm_count = std::rand()%7+6;
     
     //rm_count = 2;
     std::vector<std::vector < std::vector <int> >> door;// = {{{2,100}},{{0,100}}};
