@@ -19,7 +19,7 @@ Room::Room(std::vector <std::vector <int>> dr, int sx, int sy, int tp){
                 doors[i] = Door(float(global::resolution.width/2-sx/2-50), float(global::resolution.height/2-sy/2+dr[i][1]+100), dr[i][2],0);
                 break;
             case 1:
-                doors[i] = Door(float(global::resolution.width/2-sx/2+dr[i][1]), float(global::resolution.height/2-sy/2-50),dr[i][2],1);
+                doors[i] = Door(float(float(global::resolution.width/2)-sx/2+dr[i][1]), float(float(global::resolution.height/2)-sy/2-50),dr[i][2],1);
                 break;
             case 2:
                 doors[i] = Door(float(global::resolution.width/2)+sx/2+50, float(global::resolution.height/2)-sy/2+dr[i][1],dr[i][2],2);
@@ -49,7 +49,7 @@ void Room::drawRoom(sf::RenderWindow &w){
     door_texture.setRepeated(true);
     
     sf::Sprite floorsh;
-    floorsh.setPosition(global::resolution.width/2-sizeX/2, int(global::resolution.height)/2-sizeY/2);
+    floorsh.setPosition(float(global::resolution.width/2)-sizeX/2, float(global::resolution.height)/2-sizeY/2);
     floorsh.setTexture(floor_texture);
     floorsh.setTextureRect(sf::IntRect(0,0,sizeX,sizeY));
     w.draw(floorsh);

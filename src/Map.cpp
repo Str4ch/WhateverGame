@@ -10,14 +10,10 @@
 
 #include <random>
 #include <iostream>
-#include <vector>
 
 Map::Map(){
     //std::cout<<1;
-    rm_count = std::rand()%7+3;
-    
-    
-    
+    rm_count = std::rand()%7+4;
     
     //rm_count = 2;
     std::vector<std::vector < std::vector <int> >> door;// = {{{2,100}},{{0,100}}};
@@ -35,13 +31,16 @@ Map::Map(){
     int door_place;
     int which_room = 1;
     
-    std::vector<int> mem(5);
+    std::vector<int> mem(4);
     std::vector<int> onedoor(3);
     
-    mem[0] = -1;
     //mem.push_back(door_place);
     for(int k = 0;k<rm_count;k++){
         int in_this_room_doors = rand()%3+1;
+        mem[0] = -1;
+        mem[1] = -1;
+        mem[2] = -1;
+        mem[3] = -1;
         if(in_this_room_doors>door_count/2){
             in_this_room_doors = door_count/2;
         }
@@ -50,9 +49,10 @@ Map::Map(){
             //на какой стене будет дверь
             do{
                 door_place = rand()%4;
-            }while(door_place==mem[i]);
+                
+            }while(!check(mem, door_place));
             
-            mem[i+1] = door_place;//чтобы не повторялись
+            mem[i] = door_place;//чтобы не повторялись
             
             door_pos = rand()%2*50;//позиция на стене
             
@@ -99,4 +99,12 @@ Map::~Map(){}
 
 void Map::drawMap(sf::RenderWindow &w, int player_pos){
     room[player_pos].drawRoom(w);
+}
+bool Map::check(std::vector<int> m, int dp){
+    for(int i = 0;i<4;i++){
+        if(m[i]==dp){
+            return false;
+        }
+    }
+    return true;
 }

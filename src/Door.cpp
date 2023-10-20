@@ -25,9 +25,10 @@ Door::Door(float x, float y, int room_tp,int wall_num){
             enter_the_door.setPosition(x+50, y-75);
             
             break;
-        /*case 1:
-            
-            break;*/
+        case 1:
+            enter_the_door.setSize(sf::Vector2f(50,25));
+            enter_the_door.setPosition(x+25, y+50);
+            break;
         case 2:
             door_sp.setRotation(90);
             
@@ -38,27 +39,26 @@ Door::Door(float x, float y, int room_tp,int wall_num){
         case 3:
             door_sp.setRotation(180);
             
-            enter_the_door.setSize(sf::Vector2f(100,50));
-            enter_the_door.setPosition(x, y);
+            enter_the_door.setSize(sf::Vector2f(50,25));
+            enter_the_door.setPosition(x-75, y-75);
             
             break;
     }
 }
+
 Door::~Door(){}
 void Door::draw_door(sf::RenderWindow &w){
     sf::Texture door_texture;
     door_texture.loadFromFile("/Users/alekseyshmakov/WhateverGame/src/sprites/door.png");
     door_sp.setTexture(door_texture);
     
-    enter_the_door.setFillColor(sf::Color(100,100,50));
+    enter_the_door.setFillColor(sf::Color(0,0,0,0));
     
     
-    w.draw(enter_the_door);
     w.draw(door_sp);
-    
-    
-    
+    w.draw(enter_the_door);
 }
+
 bool Door::next_to_room(Player &p){
     return p.player_shape.getGlobalBounds().intersects(enter_the_door.getGlobalBounds());
 }

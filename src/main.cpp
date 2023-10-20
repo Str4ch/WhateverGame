@@ -1,6 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Network.hpp>
 #include <iostream>
+#include <cmath>
 
 #include "Player.hpp"
 #include "Map.hpp"
@@ -20,7 +21,7 @@ int main()
     //window.setFramerateLimit(240);
     
     sf::Vector2f direction;
-    float angle;
+    float length;
     
    bool W = false,
         A = false,
@@ -67,18 +68,15 @@ int main()
             //std::cout<<event.key.code;
         }
         
-        angle = atan((D-A)/(S-W))+M_PI_2;
-        
-        if(D-A==0){
-            angle = M_PI_2;
-        }
-        else if(S-W==0){
-            angle = 0;
-        }
+        length = std::pow((D-A)*(D-A)+(S-W)*(S-W), 0.5);
+
         //std::cout<<(angle);
-        
-        direction.x = my_player.speed*(D - A);//*(cos(angle));
-        direction.y = my_player.speed*(S-W);//*(sin(angle));
+        direction.x = my_player.speed*(D - A);
+        direction.y = my_player.speed*(S-W);
+        if(length!=0){
+            direction.x*=std::abs((D-A)/length);
+            direction.y*=std::abs((S-W)/length);
+        }
         my_player.move(direction.x,direction.y);
         view.move(direction.x,direction.y);
         
