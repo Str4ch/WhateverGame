@@ -38,11 +38,11 @@ Room::~Room(){}
 void Room::drawRoom(sf::RenderWindow &w){
     
     sf::Texture corner_texture,wall_texture,floor_texture,door_texture;
-    corner_texture.loadFromFile("/Users/alekseyshmakov/WhateverGame/src/sprites/corner.png");
+    corner_texture.loadFromFile("sprites/corner.png");
     
-    wall_texture.loadFromFile("/Users/alekseyshmakov/WhateverGame/src/sprites/wall.png");
-    floor_texture.loadFromFile("/Users/alekseyshmakov/WhateverGame/src/sprites/floor.png");
-    door_texture.loadFromFile("/Users/alekseyshmakov/WhateverGame/src/sprites/door.png");
+    wall_texture.loadFromFile("sprites/wall.png");
+    floor_texture.loadFromFile("sprites/floor.png");
+    door_texture.loadFromFile("sprites/door.png");
     
     wall_texture.setRepeated(true);
     floor_texture.setRepeated(true);
