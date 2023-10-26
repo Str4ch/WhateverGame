@@ -14,7 +14,6 @@
 #include "vector"
 
 class Map{
-    
     bool check(std::vector<int> m,int dp);
     int get_room_num(int x, int y);
 public:

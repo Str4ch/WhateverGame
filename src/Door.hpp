@@ -15,6 +15,7 @@
 class Door{
 public:
     sf::Sprite door_sp;
+    sf::Texture door_texture;
     sf::RectangleShape enter_the_door;
     float x;
     float y;

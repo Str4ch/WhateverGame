@@ -12,18 +12,14 @@
 
 class Player{
 public:
-    float x;
-    float y;
+    float x,y,speed,damage;
     int hitpoints;
-    float speed;
-    float damage;
     sf::RectangleShape player_shape;
     void get_damage(float mob_dmg);
     
 
     
     Player(float x, float y, int hp, float speed, float damage, int sizex, int sizey);
-    void prnt();
     void draw(sf::RenderWindow &w);
     void move(float xx, float yy);
 };

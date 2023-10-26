@@ -10,11 +10,7 @@ Player::Player(float x, float y, int hp, float speed, float damage, int sizex, i
     this->speed = speed;
     this->damage = damage;
 }
-void Player::prnt(){
-    
-}
 void Player::draw(sf::RenderWindow &w){
-    
     w.draw(player_shape);
 }
 void Player::move(float xx, float yy){

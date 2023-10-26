@@ -32,12 +32,9 @@ Room::Room(std::vector <std::vector <int>> dr, int sx, int sy, int tp){
     sizeX = sx;
     sizeY = sy;
     type = tp;
-}
-Room::~Room(){}
-
-void Room::drawRoom(sf::RenderWindow &w){
     
-    sf::Texture corner_texture,wall_texture,floor_texture,door_texture;
+    
+    
     corner_texture.loadFromFile("sprites/corner.png");
     
     wall_texture.loadFromFile("sprites/wall.png");
@@ -48,43 +45,43 @@ void Room::drawRoom(sf::RenderWindow &w){
     floor_texture.setRepeated(true);
     door_texture.setRepeated(true);
     
-    sf::Sprite floorsh;
     floorsh.setPosition(float(global::resolution.width/2)-sizeX/2, float(global::resolution.height)/2-sizeY/2);
     floorsh.setTexture(floor_texture);
     floorsh.setTextureRect(sf::IntRect(0,0,sizeX,sizeY));
+    
+    wall.setTexture(wall_texture);
+    wall.setTextureRect(sf::IntRect(0,0,sizeY,50));
+    
+    corner.setTexture(corner_texture);
+    corner.setTextureRect(sf::IntRect(0, 0, 50, 50));
+}
+Room::~Room(){}
+
+void Room::drawRoom(sf::RenderWindow &w){
+    
     w.draw(floorsh);
     
     //LEFT
-    sf::Sprite wall;
-    //std::cout<<" "<<global::resolution.height/2-sizeY/2;
     wall.setPosition(global::resolution.width/2-sizeX/2-50, global::resolution.height/2+sizeY/2);
-    wall.setTexture(wall_texture);
-    wall.setTextureRect(sf::IntRect(0,0,sizeY,50));
-    //
     wall.rotate(270);
     w.draw(wall);
+    
     //RIGHT
     wall.rotate(180);
     wall.setPosition(global::resolution.width/2+sizeX/2+50, int(global::resolution.height/2)-sizeY/2);
     w.draw(wall);
+    
     //TOP
     wall.setTextureRect(sf::IntRect(0,0,sizeX,50));
     wall.rotate(270);
     wall.setPosition(global::resolution.width/2-sizeX/2, int(global::resolution.height/2)-sizeY/2-50);
-    //wall.setSize(sf::Vector2f(sizeX,50));
     w.draw(wall);
+    
     //BOTTOM
     wall.rotate(180);
     wall.setPosition(global::resolution.width/2+sizeX/2, global::resolution.height/2+sizeY/2+50);
     w.draw(wall);
     
-    sf::Sprite corner;
-    //corner.setSize(sf::Vector2f(50,50));
-    
-    //corner.setFillColor(global::corner);
-    corner.setTexture(corner_texture);
-    corner.setTextureRect(sf::IntRect(0, 0, 50, 50));
-    corner.setTexture(corner_texture);
     //L_T
     corner.rotate(270);
     corner.setPosition(global::resolution.width/2-sizeX/2-50, int(global::resolution.height/2)-sizeY/2);

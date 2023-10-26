@@ -14,11 +14,8 @@ int main()
     
     sf::View view(sf::FloatRect(0, 0,global::resolution.width/4, global::resolution.height/4));
     view.setCenter(global::resolution.width/2,global::resolution.height/2);
-    window.setView(view);
     
     Player my_player(global::resolution.width/2,global::resolution.height/2,100,0.1,0,10,25);
-    my_player.prnt();
-    //window.setFramerateLimit(240);
     
     sf::Vector2f direction;
     float length;
@@ -30,8 +27,7 @@ int main()
         Shift = false;
 
     Map map;
-    bool f = true;
-    //std::cout<<map.rm_count;
+    bool f = true;//var that helps switching the doors
     
     int room_pos = 0;
     
@@ -80,6 +76,7 @@ int main()
         //std::cout<<(angle);
         direction.x = my_player.speed*(D - A);
         direction.y = my_player.speed*(S-W);
+        
         if(length!=0){
             direction.x*=std::abs((D-A)/length);
             direction.y*=std::abs((S-W)/length);
