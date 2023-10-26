@@ -15,9 +15,14 @@ namespace global {
     extern sf::Color wall;
     extern sf::Color corner;
     extern sf::Color door;
-    //extern sf::Texture corner_texture;
+
+    extern sf::Texture corner_texture;
+    extern sf::Texture wall_texture;
+    extern sf::Texture floor_texture;
+    extern sf::Texture door_texture;
+
 }
 
-//void set_evrth();
+void set_evrth();
 
 #endif /* globalvariables_hpp */

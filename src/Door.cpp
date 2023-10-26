@@ -45,9 +45,7 @@ Door::Door(float x, float y, int room_tp,int wall_num){
             break;
     }
     
-    
-    door_texture.loadFromFile("sprites/door.png");
-    door_sp.setTexture(door_texture);
+    door_sp.setTexture(global::door_texture);
 }
 
 Door::~Door(){}

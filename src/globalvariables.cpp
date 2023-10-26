@@ -13,9 +13,21 @@ namespace global {
     sf::Color wall(247,186,11);
     sf::Color corner(200,159,4);
     sf::Color door(226,176,7);
-    //sf::Texture corner_texture;
+
+    sf::Texture corner_texture;
+    sf::Texture wall_texture;
+    sf::Texture floor_texture;
+    sf::Texture door_texture;
 }
 
-/*void set_evrth(){
-    global::corner_texture.loadFromFile("/Users/alekseyshmakov/WhateverGame/src/sprites");
-}*/
+void set_evrth(){
+    global::corner_texture.loadFromFile("sprites/corner.png");
+    global::wall_texture.loadFromFile("sprites/wall.png");
+    global::floor_texture.loadFromFile("sprites/floor.png");
+    global::door_texture.loadFromFile("sprites/door.png");
+    
+    
+    global::wall_texture.setRepeated(true);
+    global::floor_texture.setRepeated(true);
+    global::door_texture.setRepeated(true);
+}

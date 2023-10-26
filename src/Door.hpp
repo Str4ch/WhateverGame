@@ -10,8 +10,9 @@
 
 #include <stdio.h>
 #include "SFML/Graphics.hpp"
-#include "Player.hpp"
 
+#include "Player.hpp"
+#include "globalvariables.hpp"
 class Door{
 public:
     sf::Sprite door_sp;

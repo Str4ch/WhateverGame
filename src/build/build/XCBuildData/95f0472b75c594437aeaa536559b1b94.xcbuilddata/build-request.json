@@ -1,0 +1,83 @@
+{
+  "buildCommand" : {
+    "command" : "prepareForIndexing",
+    "enableIndexBuildArena" : false,
+    "targets" : null
+  },
+  "configuredTargets" : [
+    {
+      "guid" : "33fc40fce3444183a5dba4e070db61c3479ea13cf34accd8f6a949f9ca5e7409"
+    },
+    {
+      "guid" : "33fc40fce3444183a5dba4e070db61c3f05ef1e278b094c91938fde3769c1459"
+    },
+    {
+      "guid" : "33fc40fce3444183a5dba4e070db61c3c7d201cb25fec48153fa47ac0b2defdf"
+    },
+    {
+      "guid" : "33fc40fce3444183a5dba4e070db61c3b48a211c8d81ec482408dff197a3ef10"
+    },
+    {
+      "guid" : "33fc40fce3444183a5dba4e070db61c335d28a3a968b8d8045c1f15852d22582"
+    },
+    {
+      "guid" : "33fc40fce3444183a5dba4e070db61c344b7f4274e8e8d1787c799eaa1ebf7bf"
+    },
+    {
+      "guid" : "33fc40fce3444183a5dba4e070db61c3cc4ba1246d5e1f9798ca0954c2545a6e"
+    },
+    {
+      "guid" : "33fc40fce3444183a5dba4e070db61c3d52d900b0ac26a983c58b4c6ad570f58"
+    },
+    {
+      "guid" : "33fc40fce3444183a5dba4e070db61c3920876d21636814053e02095f8edbae5"
+    },
+    {
+      "guid" : "33fc40fce3444183a5dba4e070db61c3a2ba36133444d11f93598238c5821189"
+    }
+  ],
+  "containerPath" : "/Users/alekseyshmakov/WhateverGame/src/build/WhateverGame.xcodeproj",
+  "continueBuildingAfterErrors" : true,
+  "enableIndexBuildArena" : false,
+  "hideShellScriptEnvironment" : false,
+  "parameters" : {
+    "action" : "build",
+    "activeArchitecture" : "arm64",
+    "activeRunDestination" : {
+      "disableOnlyActiveArch" : false,
+      "platform" : "macosx",
+      "sdk" : "macosx13.3",
+      "sdkVariant" : "macos",
+      "supportedArchitectures" : [
+        "arm64e",
+        "arm64",
+        "x86_64"
+      ],
+      "targetArchitecture" : "arm64"
+    },
+    "arenaInfo" : {
+      "buildIntermediatesPath" : "",
+      "buildProductsPath" : "",
+      "derivedDataPath" : "/Users/alekseyshmakov/Library/Developer/Xcode/DerivedData",
+      "indexDataStoreFolderPath" : "/Users/alekseyshmakov/Library/Developer/Xcode/DerivedData/WhateverGame-ciahpgaqmcuexdartmylwupugequ/Index.noindex/DataStore",
+      "indexEnableDataStore" : true,
+      "indexPCHPath" : "/Users/alekseyshmakov/Library/Developer/Xcode/DerivedData/WhateverGame-ciahpgaqmcuexdartmylwupugequ/Index.noindex/PrecompiledHeaders",
+      "pchPath" : ""
+    },
+    "configurationName" : "Debug",
+    "overrides" : {
+      "synthesized" : {
+        "table" : {
+          "ENABLE_PREVIEWS" : "NO"
+        }
+      }
+    }
+  },
+  "qos" : "default",
+  "schemeCommand" : "launch",
+  "showNonLoggedProgress" : true,
+  "useDryRun" : true,
+  "useImplicitDependencies" : true,
+  "useLegacyBuildLocations" : false,
+  "useParallelTargets" : true
+}

@@ -31,8 +31,6 @@ public:
     //тип
     int type;
     
-    sf::Texture corner_texture,wall_texture,floor_texture,door_texture;
-    
     sf::Sprite floorsh,wall,corner;
     
     void drawRoom(sf::RenderWindow &w);

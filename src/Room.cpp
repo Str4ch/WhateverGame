@@ -35,24 +35,16 @@ Room::Room(std::vector <std::vector <int>> dr, int sx, int sy, int tp){
     
     
     
-    corner_texture.loadFromFile("sprites/corner.png");
     
-    wall_texture.loadFromFile("sprites/wall.png");
-    floor_texture.loadFromFile("sprites/floor.png");
-    door_texture.loadFromFile("sprites/door.png");
     
-    wall_texture.setRepeated(true);
-    floor_texture.setRepeated(true);
-    door_texture.setRepeated(true);
     
     floorsh.setPosition(float(global::resolution.width/2)-sizeX/2, float(global::resolution.height)/2-sizeY/2);
-    floorsh.setTexture(floor_texture);
+    floorsh.setTexture(global::floor_texture);
     floorsh.setTextureRect(sf::IntRect(0,0,sizeX,sizeY));
     
-    wall.setTexture(wall_texture);
-    wall.setTextureRect(sf::IntRect(0,0,sizeY,50));
+    wall.setTexture(global::wall_texture);
     
-    corner.setTexture(corner_texture);
+    corner.setTexture(global::corner_texture);
     corner.setTextureRect(sf::IntRect(0, 0, 50, 50));
 }
 Room::~Room(){}
@@ -62,38 +54,39 @@ void Room::drawRoom(sf::RenderWindow &w){
     w.draw(floorsh);
     
     //LEFT
-    wall.setPosition(global::resolution.width/2-sizeX/2-50, global::resolution.height/2+sizeY/2);
-    wall.rotate(270);
-    w.draw(wall);
-    
-    //RIGHT
-    wall.rotate(180);
-    wall.setPosition(global::resolution.width/2+sizeX/2+50, int(global::resolution.height/2)-sizeY/2);
+    wall.setTextureRect(sf::IntRect(0,0,sizeY,50));
+    wall.setPosition(float(global::resolution.width/2)-sizeX/2-50, float(global::resolution.height/2)+sizeY/2);
+    wall.setRotation(270);
     w.draw(wall);
     
     //TOP
     wall.setTextureRect(sf::IntRect(0,0,sizeX,50));
-    wall.rotate(270);
-    wall.setPosition(global::resolution.width/2-sizeX/2, int(global::resolution.height/2)-sizeY/2-50);
+    wall.rotate(90);
+    wall.setPosition(float(global::resolution.width/2)-sizeX/2, float(global::resolution.height/2)-sizeY/2-50);
     w.draw(wall);
     
+    //RIGHT
+    wall.setTextureRect(sf::IntRect(0,0,sizeY,50));
+    wall.rotate(90);
+    wall.setPosition(float(global::resolution.width/2)+sizeX/2+50, float(global::resolution.height/2)-sizeY/2);
+    w.draw(wall);
+    
+    
+    
     //BOTTOM
-    wall.rotate(180);
-    wall.setPosition(global::resolution.width/2+sizeX/2, global::resolution.height/2+sizeY/2+50);
+    wall.setTextureRect(sf::IntRect(0,0,sizeX,50));
+    wall.rotate(90);
+    wall.setPosition(float(global::resolution.width/2)+sizeX/2, float(global::resolution.height/2)+sizeY/2+50);
     w.draw(wall);
     
     //L_T
-    corner.rotate(270);
+    corner.setRotation(270);
     corner.setPosition(global::resolution.width/2-sizeX/2-50, int(global::resolution.height/2)-sizeY/2);
     w.draw(corner);
     
-    //L_B
-    corner.rotate(270);
-    corner.setPosition(global::resolution.width/2-sizeX/2, global::resolution.height/2+sizeY/2+50);
-    w.draw(corner);
-    
     //R_T
-    corner.rotate(180);
+    
+    corner.rotate(90);
     corner.setPosition(global::resolution.width/2+sizeX/2, int(global::resolution.height/2)-sizeY/2-50);
     w.draw(corner);
     
@@ -101,6 +94,18 @@ void Room::drawRoom(sf::RenderWindow &w){
     corner.rotate(90);
     corner.setPosition(global::resolution.width/2+sizeX/2+50, global::resolution.height/2+sizeY/2);
     w.draw(corner);
+    
+    //L_B
+    corner.rotate(90);
+    corner.setPosition(global::resolution.width/2-sizeX/2, global::resolution.height/2+sizeY/2+50);
+    w.draw(corner);
+    
+    
+    //
+    
+    
+    
+    
     
     for(int i = 0;i<door_count;i++){
         doors[i].draw_door(w);

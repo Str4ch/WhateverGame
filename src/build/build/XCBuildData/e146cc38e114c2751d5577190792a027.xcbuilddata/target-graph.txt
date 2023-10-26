@@ -1,0 +1,32 @@
+Target dependency graph (8 targets)
+ZERO_CHECK in WhateverGame, no dependencies
+sfml-system in WhateverGame, depends on:
+ZERO_CHECK in WhateverGame (explicit)
+sfml-window in WhateverGame, depends on:
+sfml-system in WhateverGame (explicit)
+ZERO_CHECK in WhateverGame (explicit)
+sfml-network in WhateverGame, depends on:
+sfml-system in WhateverGame (explicit)
+ZERO_CHECK in WhateverGame (explicit)
+sfml-graphics in WhateverGame, depends on:
+sfml-system in WhateverGame (explicit)
+sfml-window in WhateverGame (explicit)
+ZERO_CHECK in WhateverGame (explicit)
+sfml-audio in WhateverGame, depends on:
+sfml-system in WhateverGame (explicit)
+ZERO_CHECK in WhateverGame (explicit)
+WG in WhateverGame, depends on:
+sfml-system in WhateverGame (explicit)
+sfml-window in WhateverGame (explicit)
+sfml-network in WhateverGame (explicit)
+sfml-graphics in WhateverGame (explicit)
+sfml-audio in WhateverGame (explicit)
+ZERO_CHECK in WhateverGame (explicit)
+ALL_BUILD in WhateverGame, depends on:
+WG in WhateverGame (explicit)
+sfml-system in WhateverGame (explicit)
+sfml-window in WhateverGame (explicit)
+sfml-network in WhateverGame (explicit)
+sfml-graphics in WhateverGame (explicit)
+sfml-audio in WhateverGame (explicit)
+ZERO_CHECK in WhateverGame (explicit)

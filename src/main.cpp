@@ -20,6 +20,8 @@ int main()
     sf::Vector2f direction;
     float length;
     
+    set_evrth();
+    
    bool W = false,
         A = false,
         S = false,
