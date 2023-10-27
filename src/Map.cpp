@@ -90,15 +90,15 @@ Map::Map(){
     for(int i = 0;i<rm_count;i++){
         sx = rand()%7*100+300;
         sy = rand()%7*100+300;
-        room[i] = Room(door[i],sx,sy,0);
+        room[i] = Room(door[i],sx,sy,rand()%4);
     }
     //room[0] = Room(door[0],1000,600,0);
     //room[1] = Room(door[1],300,300,0);
 }
 Map::~Map(){}
 
-void Map::drawMap(sf::RenderWindow &w, int player_pos){
-    room[player_pos].drawRoom(w);
+void Map::drawMap(sf::RenderWindow &w, int player_pos, Player& m_p){
+    room[player_pos].drawRoom(w,m_p);
 }
 bool Map::check(std::vector<int> m, int dp){
     for(int i = 0;i<4;i++){

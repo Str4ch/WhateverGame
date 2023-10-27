@@ -2,6 +2,8 @@
 #include <SFML/Network.hpp>
 #include <iostream>
 #include <cmath>
+#include <chrono>
+#include <unistd.h>
 
 #include "Player.hpp"
 #include "Map.hpp"
@@ -33,8 +35,15 @@ int main()
     
     int room_pos = 0;
     
+    std::chrono::time_point tick = std::chrono::steady_clock::now();
+    std::chrono::time_point tack = std::chrono::steady_clock::now();
+    std::chrono::duration<float> deltatime;
+    
+    //window.setFramerateLimit(480);
     while (window.isOpen())
     {
+        tick = std::chrono::steady_clock::now();
+        //usleep(12500);
         sf::Event event;
         while (window.pollEvent(event))
         {
@@ -76,8 +85,10 @@ int main()
         length = std::pow((D-A)*(D-A)+(S-W)*(S-W), 0.5);
 
         //std::cout<<(angle);
-        direction.x = my_player.speed*(D - A);
-        direction.y = my_player.speed*(S-W);
+        tack = std::chrono::steady_clock::now();
+        deltatime = (std::chrono::duration<float>(tack-tick));
+        direction.x = my_player.speed*(D - A) * (deltatime.count()*10000.f);
+        direction.y = my_player.speed*(S-W) * (deltatime.count()*10000.f);
         
         if(length!=0){
             direction.x*=std::abs((D-A)/length);
@@ -86,9 +97,11 @@ int main()
         my_player.move(direction.x,direction.y);
         view.move(direction.x,direction.y);
         
+        
+        //std::cout<<my_player.hitpoints<<std::endl;
         window.clear();
         window.setView(view);
-        map.drawMap(window,room_pos);
+        map.drawMap(window,room_pos,my_player);
         my_player.draw(window);
         window.display();
     }

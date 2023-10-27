@@ -1,12 +1,7 @@
-//
-//  Room.cpp
-//  WG
-//
-//  Created by Алексей Шмаков on 09.10.2023.
-//
-
 #include "Room.hpp"
 #include "Player.hpp"
+#include "Enemy.hpp"
+
 #include <iostream>
 Room::Room(){}
 Room::Room(std::vector <std::vector <int>> dr, int sx, int sy, int tp){
@@ -46,10 +41,18 @@ Room::Room(std::vector <std::vector <int>> dr, int sx, int sy, int tp){
     
     corner.setTexture(global::corner_texture);
     corner.setTextureRect(sf::IntRect(0, 0, 50, 50));
+    
+    if(type == 0){
+        enemy_count = rand()%7+3;
+        enemies = new Enemy[enemy_count];
+        for(int i = 0;i<enemy_count;i++){
+            enemies[i] = Enemy(100,12,0,rand()%sizeX+floorsh.getPosition().x,rand()%sizeY+floorsh.getPosition().y,0);
+        }
+    }
 }
 Room::~Room(){}
 
-void Room::drawRoom(sf::RenderWindow &w){
+void Room::drawRoom(sf::RenderWindow &w, Player& m_p){
     
     w.draw(floorsh);
     
@@ -109,6 +112,10 @@ void Room::drawRoom(sf::RenderWindow &w){
     
     for(int i = 0;i<door_count;i++){
         doors[i].draw_door(w);
+    }
+    for(int i = 0;i<enemy_count;i++){
+        enemies[i].draw(w);
+        enemies[i].hit_player(m_p);
     }
 }
 

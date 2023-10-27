@@ -11,6 +11,7 @@
 #include <stdio.h>
 #include <SFML/Graphics.hpp>
 #include "Room.hpp"
+#include "Player.hpp"
 #include "vector"
 
 class Map{
@@ -20,7 +21,7 @@ public:
     Room *room;
     int rm_count;
     Map();
-    void drawMap(sf::RenderWindow &w, int player_pos);
+    void drawMap(sf::RenderWindow &w, int player_pos, Player& m_p);
     ~Map();
 };
 #endif /* Map_hpp */

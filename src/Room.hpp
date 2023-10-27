@@ -14,6 +14,7 @@
 #include "globalvariables.hpp"
 #include "Player.hpp"
 #include "Door.hpp"
+#include "Enemy.hpp"
 
 class Room{
 public:
@@ -21,8 +22,9 @@ public:
     //std::vector <std::vector <int>> door;//массив в котором хранится кол-во дверей их позиция и на какой стене
     
     Door* doors;
+    Enemy* enemies;
     
-    int door_count;
+    int door_count,enemy_count;
     
     //размеры
     int sizeX;
@@ -33,7 +35,7 @@ public:
     
     sf::Sprite floorsh,wall,corner;
     
-    void drawRoom(sf::RenderWindow &w);
+    void drawRoom(sf::RenderWindow &w, Player& m_p);
     int nearRoom(Player &p);
     
     Room();
