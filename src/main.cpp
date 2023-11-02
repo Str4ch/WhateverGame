@@ -13,11 +13,11 @@ int main()
 {
     
     sf::RenderWindow window(global::resolution, "Whatever Game");
-    
+    std::cout<<"smth";
     sf::View view(sf::FloatRect(0, 0,global::resolution.width/4, global::resolution.height/4));
     view.setCenter(global::resolution.width/2,global::resolution.height/2);
     
-    Player my_player(global::resolution.width/2,global::resolution.height/2,100,0.1,0,10,25);
+    Player my_player(global::resolution.width/2,global::resolution.height/2,100,0.1,10,25);
     
     sf::Vector2f direction;
     float length;
@@ -72,15 +72,19 @@ int main()
                         }
                     }
                 }
+                map.room[room_pos].chest.open(my_player);
+                if(!map.room[room_pos].chest.weapon_is_picked)my_player.player_weapons[0] = map.room[room_pos].chest.pick(my_player);
             }
             else f = true;
+            
+            
             //std::cout<<event.key.code;
         }
         if(Shift){
-            my_player.speed = 0.15;
+            //my_player.speed = 0.15;
         }
         else{
-            my_player.speed = 0.1;
+            //my_player.speed = 0.1;
         }
         length = std::pow((D-A)*(D-A)+(S-W)*(S-W), 0.5);
 

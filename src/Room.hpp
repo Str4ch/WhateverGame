@@ -12,10 +12,11 @@
 
 #include "SFML/Graphics.hpp"
 #include "globalvariables.hpp"
+
 #include "Player.hpp"
 #include "Door.hpp"
 #include "Enemy.hpp"
-
+#include "Chest.hpp"
 class Room{
 public:
     
@@ -23,6 +24,7 @@ public:
     
     Door* doors;
     Enemy* enemies;
+    Chest chest;
     
     int door_count,enemy_count;
     

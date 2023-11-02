@@ -20,7 +20,9 @@ namespace global {
     extern sf::Texture wall_texture;
     extern sf::Texture floor_texture;
     extern sf::Texture door_texture;
-
+    extern sf::Texture hole_texture;
+    extern sf::Texture chest_texture;
+    extern sf::Texture sword_texture;
 }
 
 void set_evrth();
