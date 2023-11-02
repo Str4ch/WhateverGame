@@ -1,12 +1,4 @@
-//
-//  Enemy.cpp
-//  WhateverGame
-//
-//  Created by Алексей Шмаков on 20.10.2023.
-//
-
 #include "Enemy.hpp"
-
 
 Enemy::Enemy(int hp, int dmg, int e_t, float x, float y, float sp){
     hitpoints = hp;
@@ -21,11 +13,10 @@ Enemy::Enemy(int hp, int dmg, int e_t, float x, float y, float sp){
     enemy_shape.setFillColor(global::floor);
     
 }
+
 void Enemy::get_damage(int dmg){
     hitpoints-=dmg;
 }
-
-
 
 void Enemy::draw(sf::RenderWindow &w){
     w.draw(enemy_shape);
@@ -41,7 +32,6 @@ void Enemy::hit_player(Player &m_p){
     
     std::chrono::time_point tack = std::chrono::steady_clock::now();
     pause = std::chrono::duration<float>(tack-tick+pause);
-    //std::cout<<pause.count()<<std::endl;
 }
 
 void Enemy::move(float x, float y){
@@ -49,5 +39,7 @@ void Enemy::move(float x, float y){
     this->x+=x;
     this->y+=y;
 }
+
 Enemy::Enemy(){}
+
 Enemy::~Enemy(){}

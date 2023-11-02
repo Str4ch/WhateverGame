@@ -1,18 +1,13 @@
-//
-//  Map.hpp
-//  WG
-//
-//  Created by Алексей Шмаков on 09.10.2023.
-//
-
 #ifndef Map_hpp
 #define Map_hpp
 
-#include <stdio.h>
 #include <SFML/Graphics.hpp>
+#include <vector>
+#include <random>
+
 #include "Room.hpp"
 #include "Player.hpp"
-#include "vector"
+#include "globalvariables.hpp"
 
 class Map{
     bool check(std::vector<int> m,int dp);

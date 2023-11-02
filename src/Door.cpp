@@ -1,12 +1,4 @@
-//
-//  Door.cpp
-//  WG
-//
-//  Created by Алексей Шмаков on 18.10.2023.
-//
-
 #include "Door.hpp"
-#include <iostream>
 
 Door::Door(){}
 Door::Door(float x, float y, int room_tp,int wall_num){

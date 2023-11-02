@@ -1,14 +1,6 @@
-//
-//  Weapon.hpp
-//  WG
-//
-//  Created by Алексей Шмаков on 28.10.2023.
-//
-
 #ifndef Weapon_hpp
 #define Weapon_hpp
 
-#include <stdio.h>
 #include <SFML/Graphics.hpp>
 #include "globalvariables.hpp"
 

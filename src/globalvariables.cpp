@@ -1,10 +1,3 @@
-//
-//  globalvariables.cpp
-//  WG
-//
-//  Created by Алексей Шмаков on 10.10.2023.
-//
-
 #include "globalvariables.hpp"
 
 namespace global {

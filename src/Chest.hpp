@@ -1,10 +1,3 @@
-//
-//  Chest.hpp
-//  WhateverGame
-//
-//  Created by Алексей Шмаков on 30.10.2023.
-//
-
 #ifndef Chest_hpp
 #define Chest_hpp
 

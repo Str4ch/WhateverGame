@@ -1,10 +1,3 @@
-//
-//  globalvariables.hpp
-//  WG
-//
-//  Created by Алексей Шмаков on 10.10.2023.
-//
-
 #ifndef globalvariables_hpp
 #define globalvariables_hpp
 #include "SFML/Graphics.hpp"

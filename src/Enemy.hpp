@@ -1,7 +1,6 @@
 #ifndef Enemy_hpp
 #define Enemy_hpp
 
-#include <stdio.h>
 #include <chrono>
 #include <iostream>
 #include <SFML/Graphics.hpp>

@@ -1,9 +1,10 @@
 #include "Player.hpp"
-#include <iostream>
 Player::Player(float x, float y, int hp, float speed, int sizex, int sizey){
-    player_shape.setFillColor(sf::Color::Red);
+    player_shape.setFillColor(sf::Color::Red);//temporary
+    
     player_shape.setSize(sf::Vector2f(sizex,sizey));
     player_shape.setPosition(x-(sizex/2), y-(sizey/2));
+    
     this->x = x;
     this->y = y;
     this->hitpoints = hp;
@@ -16,13 +17,12 @@ Player::Player(float x, float y, int hp, float speed, int sizex, int sizey){
 }
 void Player::draw(sf::RenderWindow &w){
     w.draw(player_shape);
-    //std::cout<<player_weapons[0].weapon_sp.getTexture();
-    w.draw(player_weapons[0].weapon_sp);
+    w.draw(player_weapons[0].weapon_sp);//TODO
 }
 
 void Player::get_damage(int mob_dmg){
     this->hitpoints-=mob_dmg;
-    if(this->hitpoints<0)std::cout<<"u died"<<std::endl;
+    if(this->hitpoints<0);//std::cout<<"u died"<<std::endl;//TODO
 }
 void Player::move(float xx, float yy){
     this->player_shape.move(xx, yy);

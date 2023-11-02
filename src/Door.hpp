@@ -1,18 +1,11 @@
-//
-//  Door.hpp
-//  WG
-//
-//  Created by Алексей Шмаков on 18.10.2023.
-//
-
 #ifndef Door_hpp
 #define Door_hpp
 
-#include <stdio.h>
 #include "SFML/Graphics.hpp"
 
 #include "Player.hpp"
 #include "globalvariables.hpp"
+
 class Door{
 public:
     sf::Sprite door_sp;

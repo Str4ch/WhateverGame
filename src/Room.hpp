@@ -19,9 +19,6 @@
 #include "Chest.hpp"
 class Room{
 public:
-    
-    //std::vector <std::vector <int>> door;//массив в котором хранится кол-во дверей их позиция и на какой стене
-    
     Door* doors;
     Enemy* enemies;
     Chest chest;

@@ -1,10 +1,3 @@
-//
-//  Chest.cpp
-//  WhateverGame
-//
-//  Created by Алексей Шмаков on 30.10.2023.
-//
-
 #include "Chest.hpp"
 #include "globalvariables.hpp"
 #include <iostream>

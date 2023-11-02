@@ -1,10 +1,3 @@
-//
-//  Player.hpp
-//  WG
-//
-//  Created by Алексей Шмаков on 09.10.2023.
-//
-
 #ifndef Player_hpp
 #define Player_hpp
 
@@ -21,8 +14,6 @@ public:
     Weapon* player_weapons;
     
     void get_damage(int mob_dmg);
-    
-
     
     Player(float x, float y, int hp, float speed, int sizex, int sizey);
     void draw(sf::RenderWindow &w);

@@ -1,11 +1,7 @@
 #include "Room.hpp"
-#include "Player.hpp"
-#include "Enemy.hpp"
 
-#include <iostream>
 Room::Room(){}
 Room::Room(std::vector <std::vector <int>> dr, int sx, int sy, int tp){
-    //door = dr;
     door_count = int(dr.size());
     doors = new Door[door_count];
     for(int i = 0;i<door_count;i++){
@@ -109,13 +105,6 @@ void Room::drawRoom(sf::RenderWindow &w, Player& m_p){
     corner.setPosition(global::resolution.width/2-sizeX/2, global::resolution.height/2+sizeY/2+50);
     w.draw(corner);
     
-    
-    //
-    
-    
-    
-    
-    
     for(int i = 0;i<door_count;i++){
         doors[i].draw_door(w);
     }
@@ -134,7 +123,6 @@ int Room::nearRoom(Player &p){
         if(doors[i].next_to_room(p)){
             p.x = doors[i].x;
             p.y = doors[i].y;
-            //p.player_shape.setPosition(doors[i].x, doors[i].y);
             return doors[i].room_tp;
         }
     }
