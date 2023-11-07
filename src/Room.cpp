@@ -50,6 +50,9 @@ Room::Room(std::vector <std::vector <int>> dr, int sx, int sy, int tp){
             enemy_count = 0;
             chest = Chest(rand()%sizeX+floorsh.getPosition().x,rand()%sizeY+floorsh.getPosition().y);
             break;
+        default:
+            enemy_count = 0;
+            chest = Chest();
     }
 }
 Room::~Room(){}

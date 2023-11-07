@@ -22,5 +22,9 @@ public:
     void draw(sf::RenderWindow& w);
     
 };
-
+'''TODO make all weapons'''
+class Sword:Weapon{};
+class Axe:Weapon{};
+class Bow:Weapon{};
+class Punch:Weapon{};
 #endif /* Weapon_hpp */

@@ -16,6 +16,8 @@ namespace global {
     extern sf::Texture hole_texture;
     extern sf::Texture chest_texture;
     extern sf::Texture sword_texture;
+    extern sf::Texture axe_texture;
+    extern sf::Texture bow_texture;
 }
 
 void set_evrth();
