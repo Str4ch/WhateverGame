@@ -14,6 +14,9 @@ namespace global {
     sf::Texture chest_texture;
     sf::Texture hole_texture;
     sf::Texture sword_texture;
+    sf::Texture axe_texture;
+    sf::Texture bow_texture;
+    sf::Texture punch_texture;
 }
 
 void set_evrth(){
@@ -24,6 +27,9 @@ void set_evrth(){
     global::chest_texture.loadFromFile("sprites/chest.png");
     global::hole_texture.loadFromFile("sprites/hole.png");
     global::sword_texture.loadFromFile("sprites/sword.png");
+    global::axe_texture.loadFromFile("sprites/axe.png");
+    global::bow_texture.loadFromFile("sprites/bow.png");
+    global::punch_texture.loadFromFile("sprites/punch.png");
     
     global::wall_texture.setRepeated(true);
     global::floor_texture.setRepeated(true);
