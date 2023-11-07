@@ -92,13 +92,25 @@ int main()
         direction.x = my_player.speed*(D - A) * (deltatime.count()*10000.f);
         direction.y = my_player.speed*(S-W) * (deltatime.count()*10000.f);
         
-        if(length!=0){
-            direction.x*=std::abs((D-A)/length);
-            direction.y*=std::abs((S-W)/length);
+        if (length != 0) {
+            direction.x *= std::abs((D - A) / length);
+            direction.y *= std::abs((S - W) / length);
+
+            
+            
+            
+            if (my_player.x > map.room[room_pos].floorsh.getPosition().x + map.room[room_pos].sizeX + my_player.player_shape.getSize().x/2) 
+                direction.x = my_player.speed * (-A) * (deltatime.count() * 10000.f);
+            if (my_player.x < map.room[room_pos].floorsh.getPosition().x + my_player.player_shape.getSize().x/2)                           
+                direction.x = my_player.speed * D * (deltatime.count() * 10000.f);                   
+            if (my_player.y < map.room[room_pos].floorsh.getPosition().y + my_player.player_shape.getSize().y/2)
+                direction.y = my_player.speed * S * (deltatime.count() * 10000.f);                  
+            if (my_player.y > map.room[room_pos].floorsh.getPosition().y + map.room[room_pos].sizeY - my_player.player_shape.getSize().y/2)
+                direction.y = my_player.speed * (-W) * (deltatime.count() * 10000.f);
+                
+            my_player.move(direction.x, direction.y);
+            view.move(direction.x, direction.y);
         }
-        my_player.move(direction.x,direction.y);
-        view.move(direction.x,direction.y);
-        
         window.clear();
         window.setView(view);
         map.drawMap(window,room_pos,my_player);
