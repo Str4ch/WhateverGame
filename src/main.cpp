@@ -99,7 +99,7 @@ int main()
             
             
             
-            if (my_player.x > map.room[room_pos].floorsh.getPosition().x + map.room[room_pos].sizeX + my_player.player_shape.getSize().x/2) 
+            if (my_player.x > map.room[room_pos].floorsh.getPosition().x + map.room[room_pos].sizeX - my_player.player_shape.getSize().x/2) 
                 direction.x = my_player.speed * (-A) * (deltatime.count() * 10000.f);
             if (my_player.x < map.room[room_pos].floorsh.getPosition().x + my_player.player_shape.getSize().x/2)                           
                 direction.x = my_player.speed * D * (deltatime.count() * 10000.f);                   
