@@ -11,7 +11,7 @@ public:
     bool is_open;
     sf::Sprite chest_sp;
     
-    void* weapon_inside;'''TODO make random loot and make the haelth poisons'
+    void* weapon_inside;//'''TODO make random loot and make the haelth poisons'
     bool weapon_is_picked;
     Chest();
     Chest(float x, float y);

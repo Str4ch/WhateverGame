@@ -6,25 +6,39 @@
 
 class Weapon{
 public:
-    int type,damage;
+    int damage;
     
     float x,y;
     
-    bool b_draw;//this var used to indicate if the weapon needs to be drawed (f.e. when you attack someone it is drawn)
     sf::Vector2<int> direction;
     
     sf::Sprite weapon_sp;
     
-    Weapon();
-    Weapon(float x, float y, int tp, sf::Vector2<int> dr);
-    ~Weapon();
-    
     void draw(sf::RenderWindow& w);
     
 };
-'''TODO make all weapons'''
-class Sword:Weapon{};
-class Axe:Weapon{};
-class Bow:Weapon{};
-class Punch:Weapon{};
+
+class Sword:Weapon{
+    Sword();
+    Sword(float x,float y,int dmg,sf::Vector2<int> dr);
+    ~Sword();
+};
+
+class Axe:Weapon{
+    Axe();
+    Axe(float x, float y,int dmg, sf::Vector2<int> dr);
+    ~Axe();
+};
+
+class Bow:Weapon{
+    Bow();
+    Bow(float x, float y,int dmg, sf::Vector2<int> dr);
+    ~Bow();
+};
+
+class Punch:Weapon{
+    Punch();
+    Punch(float x, float y,int dmg, sf::Vector2<int> dr);
+    ~Punch();
+};
 #endif /* Weapon_hpp */
