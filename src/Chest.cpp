@@ -1,21 +1,28 @@
 #include "Chest.hpp"
 #include "globalvariables.hpp"
 #include <iostream>
+
 Chest::Chest(){}
 Chest::Chest(float x, float y){
     chest_sp.setTexture(global::chest_texture);
     chest_sp.setPosition(x, y);
-    weapon_inside = new Weapon();
     int r = random()%4;
     switch(r){
         case 0:
-            weapon_inside = new Sword();
+            lt = Loot_inside::SWORD;
+            (weapon_inside) = new Sword();
             break;
         case 1:
+            lt = Loot_inside::AXE;
+            weapon_inside = new Axe();
             break;
         case 2:
+            lt = Loot_inside::BOW;
+            weapon_inside = new Bow();
             break;
         case 3:
+            lt = Loot_inside::PUNCH;
+            weapon_inside = new Punch();
             break;
     }
     //*weapon_inside = Weapon(x+50,y+50,rand()%3+1,sf::Vector2<int>(1,1));
@@ -27,7 +34,17 @@ void Chest::draw(sf::RenderWindow &w){
     w.draw(chest_sp);
     //std::cout<<sizeof(*weapon_inside)<<std::endl;
     if(is_open && !weapon_is_picked){
-        (*(Sword*)weapon_inside)->draw(w);
+        switch(lt){
+            case SWORD:
+                (static_cast<Sword*>(weapon_inside))->draw(w);
+                break;
+            case AXE:
+                break;
+            case BOW:
+                break;
+            case PUNCH:
+                break;
+        }
     }
 }
 
@@ -37,7 +54,7 @@ void Chest::open(Player& m_p){
 }
 Weapon Chest::pick(Player &m_p){
     
-    if((!weapon_is_picked) && is_open){
+    /*if((!weapon_is_picked) && is_open){
         //std::cout<<sizeof(*weapon_inside)<<std::endl;
         if(m_p.player_shape.getGlobalBounds().intersects((weapon_inside)->weapon_sp.getGlobalBounds())){
             int tp = weapon_inside->type;
@@ -48,7 +65,7 @@ Weapon Chest::pick(Player &m_p){
             
         }
     }
-    return Weapon(0,0,0,sf::Vector2(1,1));
+    return Weapon(0,0,0,sf::Vector2(1,1));*/
 }
 
 Chest::~Chest(){}

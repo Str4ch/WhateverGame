@@ -5,12 +5,15 @@
 #include <SFML/Graphics.hpp>
 #include "Weapon.hpp"
 #include "Player.hpp"
+
+using enum Loot_inside;
+
 class Chest{
 public:
     float x,y;
     bool is_open;
     sf::Sprite chest_sp;
-    
+    Loot_inside lt;
     void* weapon_inside;//'''TODO make random loot and make the haelth poisons'
     bool weapon_is_picked;
     Chest();
@@ -21,4 +24,5 @@ public:
     void draw(sf::RenderWindow& w);
     Weapon pick(Player& m_p);
 };
+
 #endif /* Chest_hpp */

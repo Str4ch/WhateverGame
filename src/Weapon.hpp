@@ -19,24 +19,30 @@ public:
 };
 
 class Sword:Weapon{
+public:
+    void draw(sf::RenderWindow& w);
+    
     Sword();
     Sword(float x,float y,int dmg,sf::Vector2<int> dr);
     ~Sword();
 };
 
 class Axe:Weapon{
+public:
     Axe();
     Axe(float x, float y,int dmg, sf::Vector2<int> dr);
     ~Axe();
 };
 
 class Bow:Weapon{
+public:
     Bow();
     Bow(float x, float y,int dmg, sf::Vector2<int> dr);
     ~Bow();
 };
 
 class Punch:Weapon{
+public:
     Punch();
     Punch(float x, float y,int dmg, sf::Vector2<int> dr);
     ~Punch();

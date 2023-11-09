@@ -18,7 +18,15 @@ namespace global {
     extern sf::Texture sword_texture;
     extern sf::Texture axe_texture;
     extern sf::Texture bow_texture;
+
+    //extern enum Loot_inside;
 }
+enum Loot_inside{
+    SWORD,
+    AXE,
+    BOW,
+    PUNCH
+};
 
 void set_evrth();
 

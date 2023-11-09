@@ -17,6 +17,8 @@ namespace global {
     sf::Texture axe_texture;
     sf::Texture bow_texture;
     sf::Texture punch_texture;
+
+    //enum Loot_inside;
 }
 
 void set_evrth(){
@@ -34,4 +36,13 @@ void set_evrth(){
     global::wall_texture.setRepeated(true);
     global::floor_texture.setRepeated(true);
     global::door_texture.setRepeated(true);
+    
+    /*enum Loot_inside{
+        SWORD,
+        AXE,
+        BOW,
+        PUNCH
+    };*/
 }
+
+

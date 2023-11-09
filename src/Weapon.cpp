@@ -12,8 +12,12 @@ Sword::Sword(float x,float y,int dmg,sf::Vector2<int> dr){
     this->y = y;
     damage = dmg;
 }
+
 Sword::~Sword(){}
 
+void Sword::draw(sf::RenderWindow &w){
+    w.draw(weapon_sp);
+}
 
 Axe::Axe(){
     weapon_sp.setTexture(global::axe_texture);
