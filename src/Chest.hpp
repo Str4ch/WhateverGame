@@ -14,7 +14,7 @@ public:
     bool is_open;
     sf::Sprite chest_sp;
     Loot_inside lt;
-    void* weapon_inside;//'''TODO make random loot and make the haelth poisons'
+    void* weapon_inside;//'''TODO make random loot and make the health poisons'
     bool weapon_is_picked;
     Chest();
     Chest(float x, float y);
@@ -22,7 +22,7 @@ public:
     
     void open(Player& m_p);
     void draw(sf::RenderWindow& w);
-    Weapon pick(Player& m_p);
+    std::pair<Loot_inside, void*> pick(Player& m_p);
 };
 
 #endif /* Chest_hpp */

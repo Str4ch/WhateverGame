@@ -14,35 +14,42 @@ public:
     
     sf::Sprite weapon_sp;
     
+    //void move(float x, float y);
     void draw(sf::RenderWindow& w);
-    
 };
 
-class Sword:Weapon{
+class Sword:public Weapon{
 public:
-    void draw(sf::RenderWindow& w);
+    //void draw(sf::RenderWindow& w);
     
     Sword();
     Sword(float x,float y,int dmg,sf::Vector2<int> dr);
     ~Sword();
 };
 
-class Axe:Weapon{
+class Axe:public Weapon{
 public:
+    //void draw(sf::RenderWindow& w);
+    void move(float x, float y, float dir_x, float dir_y);
+    
     Axe();
     Axe(float x, float y,int dmg, sf::Vector2<int> dr);
     ~Axe();
 };
 
-class Bow:Weapon{
+class Bow:public Weapon{
 public:
+    //void draw(sf::RenderWindow& w);
+    
     Bow();
     Bow(float x, float y,int dmg, sf::Vector2<int> dr);
     ~Bow();
 };
 
-class Punch:Weapon{
+class Punch:public Weapon{
 public:
+    //void draw(sf::RenderWindow& w);
+    
     Punch();
     Punch(float x, float y,int dmg, sf::Vector2<int> dr);
     ~Punch();

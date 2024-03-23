@@ -1,6 +1,7 @@
 #include "globalvariables.hpp"
 
 namespace global {
+    double math_pi = 3.1415;
     sf::VideoMode resolution(1280, 720);
     sf::Color floor(210,183,115);
     sf::Color wall(247,186,11);

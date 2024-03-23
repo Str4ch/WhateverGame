@@ -3,6 +3,7 @@
 #include "SFML/Graphics.hpp"
 
 namespace global {
+    extern double math_pi;
     extern sf::VideoMode resolution;
     extern sf::Color floor;
     extern sf::Color wall;
