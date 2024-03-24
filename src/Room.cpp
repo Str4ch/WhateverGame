@@ -48,7 +48,7 @@ Room::Room(std::vector <std::vector <int>> dr, int sx, int sy, int tp){
             break;
         case 1:
             enemy_count = 0;
-            chest = Chest(rand()%sizeX+floorsh.getPosition().x,rand()%sizeY+floorsh.getPosition().y);
+            chest = Chest(rand()%(sizeX-100)+floorsh.getPosition().x,rand()%(sizeY-100)+floorsh.getPosition().y);
             break;
         default:
             enemy_count = 0;

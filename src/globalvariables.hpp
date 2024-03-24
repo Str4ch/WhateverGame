@@ -23,6 +23,7 @@ namespace global {
     //extern enum Loot_inside;
 }
 enum Loot_inside{
+    NOTHING,
     SWORD,
     AXE,
     BOW,

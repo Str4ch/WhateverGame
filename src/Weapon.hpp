@@ -21,7 +21,8 @@ public:
 class Sword:public Weapon{
 public:
     //void draw(sf::RenderWindow& w);
-    
+    void move(float x, float y, float dir_x, float dir_y);
+
     Sword();
     Sword(float x,float y,int dmg,sf::Vector2<int> dr);
     ~Sword();
@@ -41,7 +42,8 @@ public:
 class Bow:public Weapon{
 public:
     //void draw(sf::RenderWindow& w);
-    
+    int dir_cache;
+    void move(float x, float y, float dir_x);
     Bow();
     Bow(float x, float y,int dmg, sf::Vector2<int> dr);
     ~Bow();

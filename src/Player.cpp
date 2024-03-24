@@ -33,16 +33,30 @@ void Player::move(float xx, float yy, float dir_x, float dir_y){
     
     x += xx;
     y += yy;
-    
-    if((pl_weapons[weapon_rn].first) != 0)
-    {
-        if(is_atacking){
-           (static_cast<Axe *>(pl_weapons[weapon_rn].second))->move(x, y);
-        }
-        else (static_cast<Axe *>(pl_weapons[weapon_rn].second))->move(x, y, dir_x, dir_y);
+
+    switch (pl_weapons[weapon_rn].first) {
+        case AXE:
+            if(is_atacking){
+                (static_cast<Axe *>(pl_weapons[weapon_rn].second))->move(x, y);
+            }
+            else (static_cast<Axe *>(pl_weapons[weapon_rn].second))->move(x, y, dir_x, dir_y);
+            break;
+        case BOW:
+            if(is_atacking){
+                //(static_cast<Bow*>(pl_weapons[weapon_rn].second))->move(x, y);
+            }
+            else (static_cast<Bow*>(pl_weapons[weapon_rn].second))->move(x+5, y, dir_x);
+            break;
+        case SWORD:
+            if(is_atacking){
+                //(static_cast<Sword*>(pl_weapons[weapon_rn].second))->move(x, y);
+            }
+            else (static_cast<Sword*>(pl_weapons[weapon_rn].second))->move(x+5, y, dir_x, dir_y);
+            break;
+    }
+
         //(static_cast<Weapon*>(my_player.pl_weapons[my_player.weapon_rn].second)->weapon_sp.setPosition(my_player.x+(D-A)*10+5, my_player.y+(S-W)*25+12.5));
         //(static_cast<Axe*>(pl_weapons[weapon_rn].second))->rotate(xx, yy);
-    }
 
     
 }
