@@ -94,6 +94,7 @@ int main()
                 attack_start = std::chrono::steady_clock::now();
             }
         }
+
         if(my_player.is_atacking){
             attack_end = std::chrono::steady_clock::now();
             std::chrono::duration<float> attack_duration = std::chrono::duration<float>(attack_end - attack_start);
@@ -101,6 +102,7 @@ int main()
                 my_player.is_atacking = false;
             }
         }
+
         if(Shift){
             my_player.speed = 0.15;
         }
@@ -116,7 +118,6 @@ int main()
         deltatime = (std::chrono::duration<float>(tack-tick));
         direction.x = my_player.speed*(D - A) * (deltatime.count()*10000.f);
         direction.y = my_player.speed*(S-W) * (deltatime.count()*10000.f);
-        
         if (length != 0) {
             direction.x *= std::abs(dir_x / length);
             direction.y *= std::abs(dir_y / length);

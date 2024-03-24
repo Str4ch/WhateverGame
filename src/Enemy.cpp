@@ -14,8 +14,12 @@ Enemy::Enemy(int hp, int dmg, int e_t, float x, float y, float sp){
     
 }
 
-void Enemy::get_damage(int dmg){
-    hitpoints-=dmg;
+void Enemy::get_damage(Player &m_p){
+    if(m_p.pl_weapons[m_p.weapon_rn].first != 0){
+        if((static_cast<Axe*>(m_p.pl_weapons[m_p.weapon_rn].second))->weapon_sp.getGlobalBounds().intersects(enemy_shape.getGlobalBounds())){
+            hitpoints-=((static_cast<Axe*>(m_p.pl_weapons[m_p.weapon_rn].second))->damage);
+        }
+    }
 }
 
 void Enemy::draw(sf::RenderWindow &w){
@@ -24,8 +28,7 @@ void Enemy::draw(sf::RenderWindow &w){
 
 void Enemy::hit_player(Player &m_p){
     std::chrono::time_point tick = std::chrono::steady_clock::now();
-    
-    if(((this->x+5)-m_p.x < 10) && ((this->y+12.5)-m_p.y<20) && pause.count()*1000>(1)){
+    if(m_p.player_shape.getGlobalBounds().intersects(enemy_shape.getGlobalBounds())&& pause.count()*1000>(1)){
         m_p.get_damage(this->damage);
         pause = std::chrono::duration<float> (0);
     }

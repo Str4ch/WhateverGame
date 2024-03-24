@@ -39,6 +39,15 @@ void Axe::move(float x, float y, float dir_x, float dir_y){
     weapon_sp.setRotation(dir_x==0 && dir_y == 1?180:((acos((dir_x*0-dir_y*1)/pow(dir_x*dir_x + dir_y*dir_y, 0.5))*180/global::math_pi)*dir_x));
 }
 
+void Axe::move(float x, float y){
+    weapon_sp.setPosition(x, y);
+    this->x=x;
+    this->y=y;
+}
+
+void Axe::attack(float degree) {
+    weapon_sp.rotate(degree);
+}
 Axe::~Axe(){}
 
 Bow::Bow(){

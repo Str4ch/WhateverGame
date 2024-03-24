@@ -66,7 +66,6 @@ std::pair<Loot_inside, void*> Chest::pick(Player &m_p){
                     std::cout<<static_cast<Weapon*>(weapon_inside)->weapon_sp.getGlobalBounds().left;
                     //m_p.pl_weapons[m_p.weapon_rn].first = AXE;
                     Axe* temp = static_cast<Axe*>(weapon_inside);
-                    std::cout<<3;
                     //m_p.pl_weapons[m_p.weapon_rn].second = new Axe(*temp);
                     return std::make_pair(AXE, new Axe(*temp));
                     break;

@@ -41,9 +41,9 @@ Room::Room(std::vector <std::vector <int>> dr, int sx, int sy, int tp){
     switch(type){
         case 0:
             enemy_count = rand()%7+3;
-            enemies = new Enemy[enemy_count];
+            enemies = new Enemy*[enemy_count];
             for(int i = 0;i<enemy_count;i++){
-                enemies[i] = Enemy(100,12,0,rand()%sizeX+floorsh.getPosition().x,rand()%sizeY+floorsh.getPosition().y,0);
+                enemies[i] = new Enemy(100,12,0,rand()%sizeX+floorsh.getPosition().x,rand()%sizeY+floorsh.getPosition().y,0);
             }
             break;
         case 1:
@@ -113,10 +113,21 @@ void Room::drawRoom(sf::RenderWindow &w, Player& m_p){
     }
     
     chest.draw(w);
-    
     for(int i = 0;i<enemy_count;i++){
-        enemies[i].draw(w);
-        enemies[i].hit_player(m_p);
+        if(enemies[i]!=0) {
+            if(enemies[i]->hitpoints > 0) {
+                enemies[i]->draw(w);
+                enemies[i]->hit_player(m_p);
+                if (m_p.is_atacking) {
+                    enemies[i]->get_damage(m_p);
+                }
+            }
+            else{
+
+                delete enemies[i];
+                enemies[i] = 0;
+            }
+        }
     }
 }
 

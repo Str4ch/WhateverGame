@@ -20,7 +20,7 @@ public:
     Enemy(int hp, int dmg, int e_t, float x, float y, float speed);
     ~Enemy();
     
-    void get_damage(int dmg);
+    void get_damage(Player &m_p);
     void draw(sf::RenderWindow &w);
     void move(float x, float y);
     void hit_player(Player& m_p);

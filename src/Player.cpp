@@ -15,7 +15,12 @@ Player::Player(float x, float y, int hp, float speed, int sizex, int sizey){
 }
 void Player::draw(sf::RenderWindow &w){
     w.draw(player_shape);
-    if (pl_weapons[weapon_rn].first != 0) (static_cast<Weapon*>(pl_weapons[weapon_rn].second))->draw(w);
+    if (pl_weapons[weapon_rn].first != 0){
+        if(is_atacking){
+            (static_cast<Axe*>(pl_weapons[weapon_rn].second))->attack(1);
+        }
+        (static_cast<Weapon*>(pl_weapons[weapon_rn].second))->draw(w);
+    }
 }
 
 void Player::get_damage(int mob_dmg){
@@ -31,7 +36,10 @@ void Player::move(float xx, float yy, float dir_x, float dir_y){
     
     if((pl_weapons[weapon_rn].first) != 0)
     {
-        (static_cast<Axe*>(pl_weapons[weapon_rn].second))->move(x, y, dir_x, dir_y);
+        if(is_atacking){
+           (static_cast<Axe *>(pl_weapons[weapon_rn].second))->move(x, y);
+        }
+        else (static_cast<Axe *>(pl_weapons[weapon_rn].second))->move(x, y, dir_x, dir_y);
         //(static_cast<Weapon*>(my_player.pl_weapons[my_player.weapon_rn].second)->weapon_sp.setPosition(my_player.x+(D-A)*10+5, my_player.y+(S-W)*25+12.5));
         //(static_cast<Axe*>(pl_weapons[weapon_rn].second))->rotate(xx, yy);
     }

@@ -31,7 +31,8 @@ class Axe:public Weapon{
 public:
     //void draw(sf::RenderWindow& w);
     void move(float x, float y, float dir_x, float dir_y);
-    
+    void move(float x, float y);
+    void attack(float degree);
     Axe();
     Axe(float x, float y,int dmg, sf::Vector2<int> dr);
     ~Axe();

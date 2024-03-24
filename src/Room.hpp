@@ -20,7 +20,7 @@
 class Room{
 public:
     Door* doors;
-    Enemy* enemies;
+    Enemy** enemies;
     Chest chest;
     
     int door_count,enemy_count;
