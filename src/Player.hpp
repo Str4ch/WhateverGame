@@ -5,6 +5,7 @@
 #include <utility>
 #include <SFML/Graphics.hpp>
 
+#include "WeaponCells.hpp"
 #include "Weapon.hpp"
 
 using enum Loot_inside;
@@ -20,6 +21,7 @@ public:
     
     int weapon_rn;
     void* player_weapons[4];
+    WeaponCells* weapon_cells;
     
     void get_damage(int mob_dmg);
     

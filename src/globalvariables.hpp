@@ -20,6 +20,8 @@ namespace global {
     extern sf::Texture axe_texture;
     extern sf::Texture bow_texture;
 
+    extern  sf::Font font;
+
     //extern enum Loot_inside;
 }
 enum Loot_inside{

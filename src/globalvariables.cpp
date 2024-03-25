@@ -19,6 +19,7 @@ namespace global {
     sf::Texture bow_texture;
     sf::Texture punch_texture;
 
+    sf::Font font;
     //enum Loot_inside;
 }
 
@@ -37,7 +38,8 @@ void set_evrth(){
     global::wall_texture.setRepeated(true);
     global::floor_texture.setRepeated(true);
     global::door_texture.setRepeated(true);
-    
+
+    global::font.loadFromFile("font/en.lproj/PFAgoraSlabPro Bold.ttf");
     /*enum Loot_inside{
         SWORD,
         AXE,

@@ -12,9 +12,17 @@ Player::Player(float x, float y, int hp, float speed, int sizex, int sizey){
     this->speed = speed;
     is_atacking = false;
     weapon_rn = 0;
+    weapon_cells = new WeaponCells[4];
+    std::cout<<1<<std::endl;
+    for(int i = 0; i < 4; i++){
+        weapon_cells[i] = WeaponCells(i*25 +x - global::resolution.width/8 + 5, y - global::resolution.height/8 + 5, 20, 20, std::to_string(i+1));
+    };
 }
 void Player::draw(sf::RenderWindow &w){
     w.draw(player_shape);
+    for(int i = 0; i < 4;i++){
+        weapon_cells[i].draw(w);
+    }
     if (pl_weapons[weapon_rn].first != 0){
         if(is_atacking){
             (static_cast<Axe*>(pl_weapons[weapon_rn].second))->attack(1);
@@ -33,6 +41,9 @@ void Player::move(float xx, float yy, float dir_x, float dir_y){
     
     x += xx;
     y += yy;
+    for(int i = 0;i < 4;i++){
+        weapon_cells[i].move(xx,yy);
+    }
 
     switch (pl_weapons[weapon_rn].first) {
         case AXE:
