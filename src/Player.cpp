@@ -1,5 +1,6 @@
 #include "Player.hpp"
 #include <iostream>
+
 Player::Player(float x, float y, int hp, float speed, int sizex, int sizey){
     player_shape.setFillColor(sf::Color::Red);//temporary
     
@@ -15,8 +16,9 @@ Player::Player(float x, float y, int hp, float speed, int sizex, int sizey){
     weapon_cells = new WeaponCells[4];
     std::cout<<1<<std::endl;
     for(int i = 0; i < 4; i++){
-        weapon_cells[i] = WeaponCells(i*25 +x - global::resolution.width/8 + 5, y - global::resolution.height/8 + 5, 20, 20, std::to_string(i+1));
+        weapon_cells[i] = WeaponCells(i*25 + x - global::resolution.width/8 + 5, y - global::resolution.height/8 + 5, 20, 20, std::to_string(i+1));
     };
+    weapon_cells[weapon_rn].is_chosen = true;
 }
 void Player::draw(sf::RenderWindow &w){
     w.draw(player_shape);
@@ -42,7 +44,7 @@ void Player::move(float xx, float yy, float dir_x, float dir_y){
     x += xx;
     y += yy;
     for(int i = 0;i < 4;i++){
-        weapon_cells[i].move(xx,yy);
+        weapon_cells[i].move(i*25 + x - global::resolution.width/8 + 5, y - global::resolution.height/8 + 5);
     }
 
     switch (pl_weapons[weapon_rn].first) {

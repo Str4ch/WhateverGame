@@ -10,14 +10,13 @@
 
 int main()
 {
-    
     sf::RenderWindow window(global::resolution, "Whatever Game");
     
     sf::View view(sf::FloatRect(0, 0,global::resolution.width/4, global::resolution.height/4));
     view.setCenter(global::resolution.width/2,global::resolution.height/2);
     
     Player my_player(global::resolution.width/2,global::resolution.height/2,100,0.1,20,25);
-    
+
     sf::Vector2f direction;
     
     float length;//var to correct the speed(the same speed, not depending on the direction)
@@ -47,7 +46,6 @@ int main()
     while (window.isOpen())
     {
         tick = std::chrono::steady_clock::now();
-        //usleep(12500);
         sf::Event event;
         while (window.pollEvent(event))
         {
@@ -58,40 +56,65 @@ int main()
             S = sf::Keyboard::isKeyPressed(sf::Keyboard::S);//
             D = sf::Keyboard::isKeyPressed(sf::Keyboard::D);//vars used to move player
             Shift = sf::Keyboard::isKeyPressed(sf::Keyboard::LShift);//
-            
-            if(sf::Keyboard::isKeyPressed(sf::Keyboard::E) && f){
-                f = false;
-                int prev_room = room_pos;
-                if(map.room[room_pos].nearRoom(my_player)!=-1){//change the room by entering the door
-                    int prev_room = room_pos;
-                    
-                    room_pos = map.room[room_pos].nearRoom(my_player);
-                    
-                    for(int k = 0;k<map.room[room_pos].door_count;k++){
-                        if(prev_room == map.room[room_pos].doors[k].room_tp){
-                            my_player.x = map.room[room_pos].doors[k].enter_the_door.getPosition().x+7.5;
-                            my_player.y = map.room[room_pos].doors[k].enter_the_door.getPosition().y+12.5;
-                            my_player.player_shape.setPosition(my_player.x, my_player.y);
-                            view.setCenter(my_player.x, my_player.y);
+
+            switch (event.key.code) {
+                case sf::Keyboard::E:
+                    if (f) {
+                        f = false;
+                        int prev_room = room_pos;
+                        if (map.room[room_pos].nearRoom(my_player) != -1) {//change the room by entering the door
+                            int prev_room = room_pos;
+
+                            room_pos = map.room[room_pos].nearRoom(my_player);
+
+                            for (int k = 0; k < map.room[room_pos].door_count; k++) {
+                                if (prev_room == map.room[room_pos].doors[k].room_tp) {
+                                    my_player.x = map.room[room_pos].doors[k].enter_the_door.getPosition().x + 7.5;
+                                    my_player.y = map.room[room_pos].doors[k].enter_the_door.getPosition().y + 12.5;
+                                    my_player.player_shape.setPosition(my_player.x, my_player.y);
+                                    view.setCenter(my_player.x, my_player.y);
+                                }
+                            }
+                            break;
                         }
+                        map.room[room_pos].chest.open(my_player);//open the chest
+                        if (!map.room[room_pos].chest.weapon_is_picked) {
+                            my_player.pl_weapons[my_player.weapon_rn] = map.room[room_pos].chest.pick(my_player);
+                            if ((my_player.pl_weapons[my_player.weapon_rn].first) != 0) {
+                                my_player.weapon_cells[my_player.weapon_rn].set_weapon_inside(
+                                        (static_cast<Weapon *>(my_player.pl_weapons[my_player.weapon_rn].second)->weapon_sp));
+                                (static_cast<Weapon *>(my_player.pl_weapons[my_player.weapon_rn].second)->x = my_player.x);
+                                (static_cast<Weapon *>(my_player.pl_weapons[my_player.weapon_rn].second)->y = my_player.y);
+                            }
+                        }
+                    } else f = true;
+                    break;
+                case sf::Keyboard::F:
+                    if (!my_player.is_atacking) {
+                        my_player.is_atacking = true;
+                        attack_start = std::chrono::steady_clock::now();
                     }
                     break;
-                }
-                map.room[room_pos].chest.open(my_player);//open the chest
-                if(!map.room[room_pos].chest.weapon_is_picked){
-                    
-                    my_player.pl_weapons[my_player.weapon_rn] = map.room[room_pos].chest.pick(my_player);
-                    if((my_player.pl_weapons[my_player.weapon_rn].first) != 0){
-                        (static_cast<Weapon*>(my_player.pl_weapons[my_player.weapon_rn].second)->x = my_player.x);
-                        (static_cast<Weapon*>(my_player.pl_weapons[my_player.weapon_rn].second)->y = my_player.y);
-                    }
-                } //pick the weapon
-                
-            }
-            else f = true;
-            if(sf::Keyboard::isKeyPressed(sf::Keyboard::F) && !my_player.is_atacking){
-                my_player.is_atacking = true;
-                attack_start = std::chrono::steady_clock::now();
+                case sf::Keyboard::Num1 :
+                    my_player.weapon_cells[my_player.weapon_rn].is_chosen = false;
+                    my_player.weapon_rn = 0;
+                    my_player.weapon_cells[my_player.weapon_rn].is_chosen = true;
+                    break;
+                case sf::Keyboard::Num2 :
+                    my_player.weapon_cells[my_player.weapon_rn].is_chosen = false;
+                    my_player.weapon_rn = 1;
+                    my_player.weapon_cells[my_player.weapon_rn].is_chosen = true;
+                    break;
+                case sf::Keyboard::Num3 :
+                    my_player.weapon_cells[my_player.weapon_rn].is_chosen = false;
+                    my_player.weapon_rn = 2;
+                    my_player.weapon_cells[my_player.weapon_rn].is_chosen = true;
+                    break;
+                case sf::Keyboard::Num4 :
+                    my_player.weapon_cells[my_player.weapon_rn].is_chosen = false;
+                    my_player.weapon_rn = 3;
+                    my_player.weapon_cells[my_player.weapon_rn].is_chosen = true;
+                    break;
             }
         }
 

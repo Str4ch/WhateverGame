@@ -9,6 +9,8 @@ class WeaponCells {
     std::string cell_num;
     bool weapon_picked;
 
+
+    sf::RectangleShape chosen;
     sf::RectangleShape border;
     sf::RectangleShape cell;
     sf::Sprite weapon_inside;
@@ -17,6 +19,8 @@ class WeaponCells {
 public:
     WeaponCells();
     WeaponCells(float x, float y, float size_x, float size_y, std::string cell_num);
+
+    bool is_chosen;
 
     void draw(sf::RenderWindow &w);
     void move(float x, float y);
